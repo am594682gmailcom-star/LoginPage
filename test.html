@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <h1>Welcome back</h1>
+    <p class="sub">This is a demo page. No data is sent anywhere.</p>
+
+    <form id="login-form" novalidate>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" required>
+
+      <div class="row">
+        <label class="check"><input type="checkbox" name="remember"> Remember me</label>
+        <a href="#">Forgot password?</a>
+      </div>
+
+      <button type="submit">Log in</button>
+      <p id="message" role="status" aria-live="polite"></p>
+    </form>
+
+    <p class="foot">New here? <a href="#">Create an account</a></p>
+  </main>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = document.getElementById('email').value.trim();
+      var pass = document.getElementById('password').value;
+      var msg = document.getElementById('message');
+      if (!email || !pass) {
+        msg.className = 'error';
+        msg.textContent = 'Enter your email and password.';
+        return;
+      }
+      msg.className = 'ok';
+      msg.textContent = 'Demo login successful for ' + email + '.';
+    });
+  </script>
+</body>
+</html>
